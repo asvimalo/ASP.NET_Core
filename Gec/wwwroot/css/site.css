@@ -5,6 +5,18 @@ body {
   margin: 0;
 }
 
+#footer {
+  background-color: #222;
+  color: #eee;
+  padding: 8px 5px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin:0;
+}
+
+
+
 label {
   font-weight: bold;
   display: block;
@@ -20,18 +32,10 @@ input[type=text], input[type=password], textarea {
   margin: 0;
 }
 
-#footer {
-  background-color: #222;
-  color: #eee;
-  padding: 8px 5px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  margin:0;
-}
+
 
 .headshot {
-  max-width: 50px;
+  max-width: 100%;
   border: 1px solid #222;
   padding: 3px;
 }
