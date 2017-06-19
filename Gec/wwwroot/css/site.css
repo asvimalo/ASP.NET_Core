@@ -57,10 +57,14 @@ input[type=text], input[type=password], textarea {
 
 .headshot {
     max-width: 75%;
-    border: 1px solid #222;
+    border: 0.5px solid rgba(5,160,108,1);
     border-radius: 100%;
     margin-bottom: 20%;
     box-shadow: 4px 3px 20px 5px rgba(42,44,54,0.80);
+    
+}
+.headshot:hover {
+    box-shadow:  1px 1px 40px 5px white;
 }
 
     .headshot img {
@@ -84,10 +88,14 @@ input[type=text], input[type=password], textarea {
         font-family: sans-serif;
         font-size: 16px;
     }
-
+    
         .menu li:hover {
-            background-color: #029665;
-            color: white;
+            
+            background: linear-gradient(rgba(5,160,108,1),rgba(2,150,101,0.5), rgba(5,160,108,1));
+            box-shadow: 1px 1px 150px 1px rgb(5,160,108);
+            border-top: solid 0.5px #318E6B;
+            border-bottom: solid 0.5px #318E6B;
+             
         }
 
         .menu li a:active {
@@ -169,6 +177,7 @@ ul {
 
     #sidebarToggle:hover {
         box-shadow: 2px 1.5px 15px 5px #808080;
+       
     }
 
 #wrapper {

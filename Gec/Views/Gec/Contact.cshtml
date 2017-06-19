@@ -7,13 +7,22 @@
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 }
 <h2>Contacte-nos</h2>
-<form>
-    <label asp-for="Name">Name</label>
-    <span asp-validation-for="Name"></span>
-    <input  asp-for="Name" type="text"/>
-    <label asp-for="Email">Email</label>
-    <input asp-for="Email" type="email" />
-    <label asp-for="Message">Message</label>
-    <textarea asp-for="Message" type="text" cols="40" rows="8"></textarea>
+<form method="post" >
+    <span asp-validation-summary="ModelOnly"></span>
+    <div>
+        <label asp-for="Name">Name</label>
+        <input asp-for="Name" type="text" />
+        <div><span asp-validation-for="Name"></span></div>
+    </div>
+    <div>
+        <label asp-for="Email">Email</label>
+        <input asp-for="Email" type="email" />
+        <div><span asp-validation-for="Email"></span></div>
+    </div>
+    <div>
+        <label asp-for="Message">Message</label>
+        <textarea asp-for="Message" type="text" cols="40" rows="8"></textarea>
+        <div><span asp-validation-for="Message"></span></div>
+    </div>
     <div><input type="submit" value="Send Us Your Message" /></div>
 </form>
