@@ -15,12 +15,13 @@ namespace Gec.Controllers.Web
         {
             return View();
         }
-        public IActionResult About()
+        public IActionResult Historia()
         {
             return View();
         }
         public IActionResult Contact()
         {
+            
             return View();
         }
     }

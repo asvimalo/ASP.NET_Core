@@ -4,35 +4,46 @@
 <head>
     <meta charset="utf-8" />
     <title>@ViewBag.Title</title>
-    <link rel="stylesheet" href="css/site.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
 
 </head>
 <body>
     <div id="sidebar">
 
-        <img alt="yo" src="~/img/gec.jpg" class="headshot" />
-        <div><span id="username">Gec</span></div>
+
+        <div id="logo"><img alt="yo" src="~/img/gec.jpg" class="headshot" /></div>
+
         <ul class="menu">
-            <li class="active"><a href="#">Reservas</a></li>
-            <li><a href="#">sobre</a></li>
-            <li><a href="#">contacte-nos</a></li>
+            <li class="active"><a asp-controller="Gec" asp-action="Index">Tendências</a></li>
+            <li><a asp-controller="Gec" asp-action="Historia">História</a></li>
+            <li><a asp-controller="Gec" asp-action="Contact">Contacte-nos</a></li>
+            <li><a asp-controller="Blog" asp-action="Index">Blog</a></li>
+            <li><a asp-controller="Account" asp-action="Index">Sign In</a></li>
         </ul>
     </div>
+
     <div id="wrapper">
+
         <div id="main">
-            <div>
-                <button id="sidebarToggle" type="button">Toggle Menu</button>
+
+            <div id="buttonMenu">
+                <button id="sidebarToggle" type="button">
+
+                    <div>
+                        <div class="bars"></div>
+                        <div class="bars"></div>
+                        <div class="bars"></div>
+                    </div>
+                </button>
             </div>
-            
             @RenderBody();
-
         </div>
-        <div id="footer">
-            &copy; 2017 Gec.org
-        </div>
-
     </div>
-    <script src="lib/jquery/dist/jquery.min.js"></script>
-    <script src="js/site.js"></script>
+    <div id="footer">
+        &copy; 2017 Gec.org
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @RenderSection("scripts", false);
+    <script src="~/js/site.js"></script>
 </body>
 </html>

@@ -1,11 +1,16 @@
 ﻿
 
 $(document).ready(() => {
-
+    console.log("Ready")
+    
+    //animate();
 });
+//function animate() {
+//    $("#buttonMenu").effect("bounce", { times: 5 }, animate);
+//};
 
 (function () {
-
+    //animate();
     // Toggle side bar
     var sidebarAndWrapper = $("#sidebar,#wrapper");
     var icon = $("#sidebarToggle i.fa");

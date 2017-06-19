@@ -1,0 +1,19 @@
+﻿@model Gec.ViewModels.ContactViewModel
+@{ 
+    ViewBag.Title = "Contact";
+}
+@section scripts {
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
+<h2>Contacte-nos</h2>
+<form>
+    <label asp-for="Name">Name</label>
+    <span asp-validation-for="Name"></span>
+    <input  asp-for="Name" type="text"/>
+    <label asp-for="Email">Email</label>
+    <input asp-for="Email" type="email" />
+    <label asp-for="Message">Message</label>
+    <textarea asp-for="Message" type="text" cols="40" rows="8"></textarea>
+    <div><input type="submit" value="Send Us Your Message" /></div>
+</form>

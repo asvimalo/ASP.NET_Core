@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Diagnostics;
 
 namespace Gec
 {
@@ -20,10 +21,12 @@ namespace Gec
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app/*, IHostingEnvironment env, ILoggerFactory loggerFactory*/)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env/*, ILoggerFactory loggerFactory*/)
         {   //1.
             //app.UseDefaultFiles(); => once a controller 
             //has control over a view the default index won t be used
+            if (env.IsEnvironment("Development"))
+                app.UseDeveloperExceptionPage();
 
 
             app.UseStaticFiles();
