@@ -25,7 +25,8 @@ namespace Gec
             //To be able to load the json file
             var builder = new ConfigurationBuilder()
                 .SetBasePath(_env.ContentRootPath)
-                .AddJsonFile("config.json");
+                .AddJsonFile("config.json")
+                .AddEnvironmentVariables();
             //Set the configuration
             _config = builder.Build();
 

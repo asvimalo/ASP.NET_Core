@@ -4,6 +4,9 @@
 <head>
     <meta charset="utf-8" />
     <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/lib/bootswatch/spacelab/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 
 </head>
@@ -14,12 +17,12 @@
         <div id="logo"><img alt="yo" src="~/img/gec.jpg" class="headshot" /></div>
 
         <ul class="menu">
-            <li class="active"><a asp-controller="Gec" asp-action="Index">Noticias</a></li>
-            <li><a asp-controller="Blog" asp-action="Index">Blog</a></li>
-            <li><a asp-controller="Gec" asp-action="Historia">O Gec</a></li>
-            <li><a asp-controller="Playground" asp-action="Index">Playground</a></li>
-            <li><a asp-controller="Gec" asp-action="Contact">Contacte-nos</a></li>           
-            <li><a asp-controller="Account" asp-action="Login">Sign In</a></li>
+            <li class="active"><a asp-controller="Gec" asp-action="Index">Noticias <i class="glyphicon glyphicon-globe"></i></a></li>
+            <li><a asp-controller="Blog" asp-action="Index">Blog <i class="fa fa-newspaper-o"></i></a></li>
+            <li><a asp-controller="Gec" asp-action="Historia">O Gec <i class="fa fa-leaf"></i></a></li>
+            <li><a asp-controller="Playground" asp-action="Index">Playground <i class="fa fa-play-circle"></i></a></li>
+            <li><a asp-controller="Gec" asp-action="Contact">Contacte <i class="glyphicon glyphicon-send"></i></a></li>           
+            <li><a asp-controller="Account" asp-action="Login"><i class="fa fa-user-circle"></i> <i class="glyphicon glyphicon-log-in"></i></i></a></li>
         </ul>
     </div>
 
@@ -28,23 +31,28 @@
         <div id="main">
 
             <div id="buttonMenu">
-                <button id="sidebarToggle" type="button">
+                <button id="sidebarToggle" class="btn btn-sm" type="button">
+                    <i class="fa fa-angle-left">
 
-                    <div>
+                    </i>
+                    @*<div>
                         <div class="bars"></div>
                         <div class="bars"></div>
                         <div class="bars"></div>
-                    </div>
+                    </div>*@
                 </button>
             </div>
             @RenderBody();
         </div>
+        <div id="footer">
+            <p>&copy; 2017 <a class="text-success" href="http://www.gec.pt">gec grupo ecológico de Cascais</a></p>
+        </div>
     </div>
-    <div id="footer">
-        &copy; 2017 Gec.org
-    </div>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    
+    <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/js/site.js"></script>
     @RenderSection("scripts", false);
-    <script src="~/js/site.js"></script>
+    
 </body>
 </html>

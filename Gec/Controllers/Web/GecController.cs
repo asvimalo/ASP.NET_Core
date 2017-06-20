@@ -36,7 +36,19 @@ namespace Gec.Controllers.Web
         [HttpPost]
         public IActionResult Contact(ContactViewModel model)
         {
-            _emailService.SendMeil(_config["MailSettings:ToAddress"], model.Email, "From Gec", model.Message);
+            if (model.Email.Contains("aol.com"))
+                ModelState.AddModelError("Email", "We do not support AOL addresses");
+
+            if (ModelState.IsValid)
+            {
+                _emailService.SendMeil(_config["MailSettings:ToAddress"], model.Email, "From Gec", model.Message);
+
+                ModelState.Clear();
+
+                ViewBag.UserMessage = "Message sent";
+            }
+                
+
             return View();
         }
     }

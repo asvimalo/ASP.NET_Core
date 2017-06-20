@@ -1,9 +1,9 @@
 ﻿/*site.css*/
-body {
+/*body {
     font-family: sans-serif;
     font-size: 14px;
     margin: 0;
-}
+}*/
 
 .bars {
     border: 2px solid white;
@@ -33,22 +33,26 @@ body {
     text-align: center;
     background: linear-gradient(rgba(42,44,54,1),rgba(42,44,54,0.80), rgba(42,44,54,1));
 }
-
-
-
-label {
-    font-weight: bold;
-    display: block;
+#footer:hover {
+    background: linear-gradient(rgba(2,150,101,0.5), rgba(5,160,108,1),rgba(2,150,101,0.5));
+            box-shadow: 1px 1px 1px 1px rgb(5,160,108);
 }
 
-input[type=text], input[type=password], textarea {
-    width: 150px;
+
+
+/*label {
+    font-weight: bold;
+    display: block;
+}*/
+
+/*input[type=text], input[type=password], textarea {
+    width: 150px;*/
 }
 
 #main {
     background-color: #eee;
-    padding: 4px;
-    margin: 0;
+    
+    margin: 0 auto 0 auto;
 }
 
 #logo {
@@ -60,11 +64,13 @@ input[type=text], input[type=password], textarea {
     border: 0.5px solid rgba(5,160,108,1);
     border-radius: 100%;
     margin-bottom: 20%;
-    box-shadow: 4px 3px 20px 5px rgba(42,44,54,0.80);
+    box-shadow: 1px 1px 10px 1px white;
     
 }
 .headshot:hover {
-    box-shadow:  1px 1px 40px 5px white;
+    /*box-shadow:  1px 1px 40px 5px white;*/
+    background: linear-gradient(rgba(5,160,108,1),rgba(2,150,101,0.5), rgba(5,160,108,1));
+    box-shadow: 1px 1px 40px 5px white;
 }
 
     .headshot img {
@@ -92,7 +98,7 @@ input[type=text], input[type=password], textarea {
         .menu li:hover {
             
             background: linear-gradient(rgba(5,160,108,1),rgba(2,150,101,0.5), rgba(5,160,108,1));
-            box-shadow: 1px 1px 150px 1px rgb(5,160,108);
+            box-shadow: 1px 1px 25px 1px rgb(5,160,108);
             border-top: solid 0.5px #318E6B;
             border-bottom: solid 0.5px #318E6B;
              
@@ -152,22 +158,22 @@ ul {
 }
 
 #sidebarToggle {
-    font-weight: 100;
+    /*font-weight: 100;*/
     background-color: #00A064;
     color: white;
-    padding: 0.6%;
+    /*padding: 0.6%;*/
     
-    font-size: 14px;
+    /*font-size: 14px;
     text-decoration: none;
-    border: 1px solid #068B59;
+    border: 1px solid #068B59;*/
     box-shadow: 2px 1.5px 15px 2px #808080;
-    -moz-transition: background-color ease .3s;
+    /*-moz-transition: background-color ease .3s;
     -o-transition: background-color ease .3s;
     -webkit-transition: background-color ease .3s;
     transition: background-color ease .3s;
-    font-weight: bold;
-    width: 50px;
-    height: 50px;
+    font-weight: bold;*/
+    width: 40px;
+    height: 40px;
     
     
 }
@@ -177,6 +183,8 @@ ul {
 
     #sidebarToggle:hover {
         box-shadow: 2px 1.5px 15px 5px #808080;
+        background: linear-gradient(rgba(5,160,108,1),rgba(2,150,101,0.5), rgba(5,160,108,1));
+        box-shadow: 1px 1px 150px 1px rgb(5,160,108);
        
     }
 
