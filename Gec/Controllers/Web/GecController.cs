@@ -5,16 +5,21 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Gec.ViewModels;
 using Gec.Services;
+using Microsoft.Extensions.Configuration;
 
 namespace Gec.Controllers.Web
 {
     
     public class GecController : Controller
     {
-        ImailService _emailService;
-        public GecController(ImailService emailService)
+        IEmailService _emailService;
+        IConfigurationRoot _config;
+
+
+        public GecController(IEmailService emailService, IConfigurationRoot config)
         {
             _emailService = emailService;
+            _config = config;
         }
         public IActionResult Index()
         {
@@ -31,7 +36,7 @@ namespace Gec.Controllers.Web
         [HttpPost]
         public IActionResult Contact(ContactViewModel model)
         {
-            _emailService.SendMeil("asvimalo@gmail.com", model.Email, "From Gec", model.Message);
+            _emailService.SendMeil(_config["MailSettings:ToAddress"], model.Email, "From Gec", model.Message);
             return View();
         }
     }

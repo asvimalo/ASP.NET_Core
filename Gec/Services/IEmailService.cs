@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Gec.Services
 {
-    public interface ImailService
+    public interface IEmailService
     {
         void SendMeil(string to, string from, string subject, string body);
     }

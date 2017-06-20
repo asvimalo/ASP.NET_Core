@@ -18,10 +18,10 @@ namespace Gec
         private IHostingEnvironment _env;
         private IConfigurationRoot _config;
 
-        public Startup(IHostingEnvironment env, IConfigurationRoot config)
+        public Startup(IHostingEnvironment env)
         {
             _env = env;
-            _config = config;
+            
             //To be able to load the json file
             var builder = new ConfigurationBuilder()
                 .SetBasePath(_env.ContentRootPath)
@@ -38,7 +38,7 @@ namespace Gec
 
             if (_env.IsDevelopment() || _env.IsEnvironment("Testing"))
             {
-                services.AddScoped<ImailService, DebugMailService>(); 
+                services.AddScoped<IEmailService, DebugMailService>(); 
             }
             else
             {

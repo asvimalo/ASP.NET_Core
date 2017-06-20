@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Gec.Services
 {
-    public class DebugMailService : ImailService
+    public class DebugMailService : IEmailService
     {
         public void SendMeil(string to, string from, string subject, string body)
         {
