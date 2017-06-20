@@ -25,8 +25,7 @@ namespace Gec.Controllers.Web
             return View();
         }
         public IActionResult Contact()
-        {
-            
+        {            
             return View();
         }
         [HttpPost]

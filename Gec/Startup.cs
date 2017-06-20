@@ -9,22 +9,34 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Diagnostics;
 using Gec.Services;
+using Microsoft.Extensions.Configuration;
 
 namespace Gec
 {
     public class Startup
     {
         private IHostingEnvironment _env;
+        private IConfigurationRoot _config;
 
-        public Startup(IHostingEnvironment env)
+        public Startup(IHostingEnvironment env, IConfigurationRoot config)
         {
             _env = env;
+            _config = config;
+            //To be able to load the json file
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(_env.ContentRootPath)
+                .AddJsonFile("config.json");
+            //Set the configuration
+            _config = builder.Build();
+
         }
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            if (_env.IsDevelopment())
+            services.AddSingleton(_config);
+
+            if (_env.IsDevelopment() || _env.IsEnvironment("Testing"))
             {
                 services.AddScoped<ImailService, DebugMailService>(); 
             }
