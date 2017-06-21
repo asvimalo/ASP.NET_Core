@@ -15,6 +15,7 @@
 
 #buttonMenu {
     width: 100%;
+     
     
     
 }
@@ -24,6 +25,7 @@
 
 #footer {
     background-color: #2a2c36;
+    opacity:0.98;
     color: #eee;
     padding: 2% 1%;
     position: fixed;
@@ -31,7 +33,7 @@
     width: 100%;
     margin: 0;
     text-align: center;
-    background: linear-gradient(rgba(42,44,54,1),rgba(42,44,54,0.80), rgba(42,44,54,1));
+    /*background: linear-gradient(rgba(42,44,54,1),rgba(42,44,54,0.95), rgba(42,44,54,1));*/
 }
 #footer:hover {
     background: linear-gradient(rgba(2,150,101,0.5), rgba(5,160,108,1),rgba(2,150,101,0.5));
@@ -50,7 +52,7 @@
 }
 
 #main {
-    background-color: #eee;
+    /*background-color: #eee;*/
     
     margin: 0 auto 0 auto;
 }
@@ -76,58 +78,69 @@
     .headshot img {
         max-width: 100%;
     }
-
-.menu {
+#navbarTransform {
+    background: linear-gradient(rgba(42,44,54,1),rgba(42,44,54,0.70), rgba(42,44,54,1));
+}
+.nav {
 }
 
-    .menu li {
+    .nav li {
         text-align: center;
         list-style-type: none;
         width: 100%;
         /*border: 0.5px solid #029665;*/
-        border-left: 0;
-        border-radius: 2%;
+        /*border-left: 0;*/
+        /*border-radius: 2%;
         padding-top: 5%;
         padding-bottom: 5%;
         padding-right: 0;
         padding-left: 0;
         font-family: sans-serif;
-        font-size: 16px;
+        font-size: 16px;*/
+        font-size: 18px;
+            font-family: fantasy;
+            color: white;
+            text-decoration: none;
+            font-weight: 100;
     }
     
-        .menu li:hover {
+        .nav li:hover {
             
-            background: linear-gradient(rgba(5,160,108,1),rgba(2,150,101,0.5), rgba(5,160,108,1));
-            box-shadow: 1px 1px 25px 1px rgb(5,160,108);
+            background: linear-gradient(rgba(5,160,108,1),rgba(2,150,101,0.8), rgba(5,160,108,1));
+            box-shadow: 1px 1px 0px 1px rgb(5,160,108);
             border-top: solid 0.5px #318E6B;
             border-bottom: solid 0.5px #318E6B;
              
         }
 
-        .menu li a:active {
+        .nav li a:active {
             background-color: #029665;
         }
 
-        .menu li.active {
+        .nav li.active {
             font-weight: bold;
         }
 
-        .menu li a {
+        .nav li a {
             font-size: 18px;
             font-family: fantasy;
-            color: white;
+            color:white;
             text-decoration: none;
             font-weight: 100;
+            
         }
 
-            .menu li a:hover {
-                color: white;
+            .nav li a:hover {
+                background-color: #029665;
+                color:white;
+                
             }
 
 
 #sidebar {
     display: block;
     background: #2a2c36;
+    /*opacity:0.95;*/
     color: #eee;
     position: fixed;
     height: 100%;
@@ -142,7 +155,7 @@
     /*background: -webkit-linear-gradient(left,rgba(255,0,0,0),rgba(42,44,54,1)); /*Safari 5.1-6*/
     /*background: -o-linear-gradient(right,rgba(255,0,0,0),rgba(42,44,54,1)); /*Opera 11.1-12*/
     /*background: -moz-linear-gradient(right,rgba(255,0,0,0),rgba(42,44,54,1));*/ /*Fx 3.6-15/*/
-    background: linear-gradient(rgba(42,44,54,1),rgba(42,44,54,0.80), rgba(42,44,54,1));
+    background: linear-gradient(rgba(42,44,54,1),rgba(42,44,54,0.70), rgba(42,44,54,1));
 }
 
     #sidebar.hide-sidebar {

@@ -6,7 +6,7 @@
 <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 }
-<h2>Contacte-nos</h2>
+@*<h2>Contacte-nos</h2>
 
 <form method="post">
     <span asp-validation-summary="ModelOnly"></span>
@@ -30,4 +30,83 @@
         <div><span asp-validation-for="Message"></span></div>
     </div>
     <div><input type="submit" value="Send Us Your Message" /></div>
-</form>
+</form>*@
+<div class="row">
+    <div id="contact" class="container">
+        <h3 class="text-center">Contact</h3>
+        <p class="text-center"><em>We love our fans!</em></p>
+
+        <div class="row">
+            <div class="col-md-4">
+                
+                <p><span class="glyphicon glyphicon-map-marker"></span>Cascais, PT</p>
+                <p><span class="glyphicon glyphicon-phone"></span>Phone: +351 21483115588</p>
+                <p><span class="glyphicon glyphicon-envelope"></span>Email: info@gec.com</p>
+            </div>
+            <form class="col-md-8" method="post">
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <span class="input-group-addon"><i class="fa fa-address-book" aria-hidden="true"></i></span>
+                        <input asp-for="Name" class="form-control" id="Name" name="Name" placeholder="Name" type="text" required >                  
+                        <div><span class="text-muted" asp-validation-for="Name"></span></div>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                        <input asp-for="Email" class="form-control" id="Email" name="Email" placeholder="Email" type="email" required>
+                        <div><span class="text-muted" asp-validation-for="Email"></span></div>
+                    </div>
+                </div>
+                <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                <textarea asp-for="Message" class="form-control" id="Message" name="Message" placeholder="Message" rows="5"></textarea>
+                <div><span class="text-muted" asp-validation-for="Message"></span></div>
+                <br>
+                <div class="row">
+                    <div class="col-md-12 form-group">
+                        <a asp-controller="Gec" asp-action="Index" class="btn btn-default"> Cancel</a>
+                        <button class="btn pull-right" type="submit">Send <i class="glyphicon glyphicon-send" ></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <br>
+        <h3 class="text-center">Comentarios do Blog</h3>
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home">Paula</a></li>
+            <li><a data-toggle="tab" href="#menu1">Mario</a></li>
+            <li><a data-toggle="tab" href="#menu2">Alicia</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                <h2>Paula Mascarenhas, Presidente</h2>
+                <p>Movimento verde</p>
+            </div>
+            <div id="menu1" class="tab-pane fade">
+                <h2>Mario, Médico</h2>
+                <p>Movimento verde, verduras é qu é bom</p>
+            </div>
+            <div id="menu2" class="tab-pane fade">
+                <h2>Alicia, Filóloga</h2>
+                <p>Movimento verde, é bom...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Google Maps -->
+    <div id="googleMap"></div>
+    <script>
+            function myMap() {
+                var myCenter = new google.maps.LatLng(41.878114, -87.629798);
+                var mapProp = {center:myCenter, zoom:12, scrollwheel:false, draggable:false, mapTypeId:google.maps.MapTypeId.ROADMAP};
+                var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+                var marker = new google.maps.Marker({position:myCenter});
+                marker.setMap(map);
+            }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
+    <!--
+    To use this code on your website, get a free API key from Google.
+    Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+    -->
+
+</div>

@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Gec.ViewModels;
 using Gec.Services;
 using Microsoft.Extensions.Configuration;
+using Gec.Models;
+using Gec.EF;
+using Gec.EF.Db;
 
 namespace Gec.Controllers.Web
 {
@@ -14,12 +17,13 @@ namespace Gec.Controllers.Web
     {
         IEmailService _emailService;
         IConfigurationRoot _config;
+        private GecContext _ctx;
 
-
-        public GecController(IEmailService emailService, IConfigurationRoot config)
+        public GecController(IEmailService emailService, IConfigurationRoot config, GecContext ctx)
         {
             _emailService = emailService;
             _config = config;
+            _ctx = ctx;
         }
         public IActionResult Index()
         {

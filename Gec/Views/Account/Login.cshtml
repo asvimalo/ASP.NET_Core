@@ -1,93 +1,12 @@
-﻿@*<div class="row">
-    <div class="col-md-12">*@
-        @*<div class="pr-wrap">
-                <div class="pass-reset">
-                    <label>
-                        Enter the email you signed up with
-                    </label>
-                    <input type="email" placeholder="Email" />
-                    <input type="submit" value="Submit" class="pass-reset-submit btn btn-success btn-sm" />
-                </div>
-            </div>*@
-        @*<div class="wrap">
+﻿@{ 
+    ViewBag.Title = "Login";
+}
 
-            <div class="col-md-3 col-md-offset-3">
-                <p class="form-title">
-                    Sign In
-                </p>
-                <form class="login">*@
-                    @*@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                        @Html.AntiForgeryToken()
+@section scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/js/site.js"></script>
 
+}
+<link href="~/css/loginStyle.css" rel="stylesheet" />
 
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <div class="form-group">
-                            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                            <div class="col-md-10">
-                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                            <div class="col-md-10">
-                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <div class="checkbox">
-                                    @Html.CheckBoxFor(m => m.RememberMe)
-                                    @Html.LabelFor(m => m.RememberMe)
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Log in" class="pass-reset-submit btn btn-success btn-sm" />
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <br />
-                                <p>
-                                    @Html.ActionLink("Register as a new user", "Register")
-                                </p>
-                            </div>
-                            @*//Enable this once you have account confirmation enabled for password reset functionality
-                                <p>
-                                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                                </p>
-                        </div>
-
-
-
-                    }
-                </form>*@
-            @*</div>
-            <div class="col-md-3 text-center">
-
-                <p class="form-title">
-
-                    Sign In <br />
-                    <br />
-                    with <br />
-                    <br />
-                    Google
-                </p>
-                <div class="form-group col-md-12 login" id="socialLoginForm" style="margin-top:12.5%">
-
-
-                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-
-
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-</div>*@

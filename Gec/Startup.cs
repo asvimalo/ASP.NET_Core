@@ -10,6 +10,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Diagnostics;
 using Gec.Services;
 using Microsoft.Extensions.Configuration;
+using Gec.Models;
+using Gec.EF;
 
 namespace Gec
 {
@@ -39,17 +41,23 @@ namespace Gec
 
             if (_env.IsDevelopment() || _env.IsEnvironment("Testing"))
             {
-                services.AddScoped<IEmailService, DebugMailService>(); 
+                services.AddScoped<IEmailService, DebugMailService>();
             }
             else
             {
                 // implement the real one
             }
+            services.AddDbContext<GecContext>();
+            services.AddTransient<GecContextSeedData>();
             services.AddMvc();
+        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env/*, ILoggerFactory loggerFactory*/)
+        public void Configure(IApplicationBuilder app, 
+            IHostingEnvironment env,
+            GecContextSeedData seeder
+            /*, ILoggerFactory loggerFactory*/)
         {   //1.
             //app.UseDefaultFiles(); => once a controller 
             //has control over a view the default index won t be used
@@ -71,6 +79,7 @@ namespace Gec
                     defaults: new { controller = "Gec", action = "Index" }
                 );
             });
+            seeder.EnsureSeedData().Wait();
 
             #region Default
             //loggerFactory.AddConsole();

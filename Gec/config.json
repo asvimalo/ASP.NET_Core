@@ -1,5 +1,9 @@
 ﻿{
   "MailSettings": {
     "ToAddress": "asvimalo@gmail.com"
+  },
+  "ConnectionStrings": {
+    "GecContextConnection": "Server=(localdb)\\MSSQLLocalDB;Database=GecDb;Trusted_Connection=true;MultipleActiveResultSets=true;"
   }
+
 }
