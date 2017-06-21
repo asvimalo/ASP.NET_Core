@@ -20,8 +20,8 @@ namespace Gec.EF.Db
         public DbSet<Trip> Trips { get; set; }
         public DbSet<Stop> Stops { get; set; }
         public DbSet<Feed> Feeds { get; set; }
-        public DbSet<Feed> Comments { get; set; }
-        public DbSet<Feed> Pictures { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Picture> Pictures { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
