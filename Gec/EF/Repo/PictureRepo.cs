@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using Gec.Models.Gec;
 using Gec.EF.Db;
 using Microsoft.EntityFrameworkCore;
+using Gec.EF.IRepo;
 
 namespace Gec.EF.Repo
 {
-    public class PictureRepo
+    public class PictureRepo : IPictureRepo
     {
         private GecContext _ctx;
 
@@ -41,6 +42,7 @@ namespace Gec.EF.Repo
             return _ctx.Pictures.ToList();
         }
 
+       
         public Picture Update(Picture picture)
         {
             _ctx.Entry(picture).State = EntityState.Modified;

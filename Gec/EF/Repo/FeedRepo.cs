@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Gec.EF.Repo
 {
-    public class FeedRepo 
+    public class FeedRepo : IFeedRepo
     {
         private GecContext _ctx;
 

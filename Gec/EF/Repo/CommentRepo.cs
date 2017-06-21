@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using Gec.Models.Gec;
 using Gec.EF.Db;
 using Microsoft.EntityFrameworkCore;
+using Gec.EF.IRepo;
 
 namespace Gec.EF.Repo
 {
-    public class CommentRepo 
+    public class CommentRepo : ICommentRepo
     {
         private GecContext _ctx;
 

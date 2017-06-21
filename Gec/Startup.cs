@@ -12,6 +12,7 @@ using Gec.Services;
 using Microsoft.Extensions.Configuration;
 using Gec.Models;
 using Gec.EF;
+using Gec.EF.Db;
 
 namespace Gec
 {
