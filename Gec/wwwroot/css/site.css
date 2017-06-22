@@ -22,14 +22,14 @@
 
 
 #footer {
-    background-color: #2a2c36;
+    /*background-color: #2a2c36;
     opacity:0.98;
     color: #eee;
     padding: 2% 1%;
     position: fixed;
     bottom: 0;
-    width: 100%;
-    margin: 0;
+    width: 100%;*/
+    margin: 0 auto 0 auto;
     text-align: center;
     /*background: linear-gradient(rgba(42,44,54,1),rgba(42,44,54,0.95), rgba(42,44,54,1));*/
 }
@@ -49,15 +49,7 @@
     width: 150px;*/
 /*}*/
 
-#main {
-    /*background-color: #eee;*/
-    
-    margin: 0 auto 0 auto;
-}
 
-#logo {
-    margin: 16% 0 0 16%;
-}
 
 .headshot {
     max-width: 75%;
@@ -76,6 +68,17 @@
     .headshot img {
         max-width: 100%;
     }
+
+#main {
+    /*background-color: #eee;*/
+    
+    margin: 0 auto 0 auto;
+}
+
+#logo {
+    margin: 16% 0 0 16%;
+}
+
 #navbarTransform {
     background: linear-gradient(rgba(42,44,54,1),rgba(42,44,54,0.70), rgba(42,44,54,1));
 }

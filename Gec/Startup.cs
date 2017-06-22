@@ -19,6 +19,7 @@ using Gec.Models.Gec;
 using Gec.Models.Account;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Gec
 {
@@ -75,7 +76,13 @@ namespace Gec
 
             services.AddTransient<GecContextSeedData>();
             services.AddLogging();
-            services.AddMvc();
+            services.AddMvc(config => {
+                if (_env.IsEnvironment("IsProduction"))
+                {
+                    config.Filters.Add(new RequireHttpsAttribute());
+                }
+                    
+            });
         
         }
 

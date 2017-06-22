@@ -53,6 +53,12 @@ namespace Gec.Controllers.Web
             return View();
            
         }
+        public async Task<ActionResult> Logout()
+        {
+            if (User.Identity.IsAuthenticated)
+                await _signInManager.SignOutAsync();
+            return RedirectToAction("Gec","Index");
+        }
 
 
         //public IActionResult Login()

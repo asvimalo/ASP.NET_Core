@@ -21,6 +21,11 @@
             <li><a asp-controller="Playground" asp-action="Index">Playground <i class="fa fa-play-circle"></i></a></li>
             <li><a asp-controller="Gec" asp-action="Contact">Contacte <i class="glyphicon glyphicon-send"></i></a></li>
             <li><a asp-controller="Account" asp-action="Login"><i class="fa fa-user-circle"></i> <i class="glyphicon glyphicon-log-in"></i></a></li>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li><a asp-controller="Account" asp-action="Logout"><i class="fa fa-user-circle"></i> <i class="glyphicon glyphicon-log-out"></i></a></li>
+
+            }
         </ul>
     </div>
 
