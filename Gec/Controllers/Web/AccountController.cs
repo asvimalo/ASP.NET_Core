@@ -42,7 +42,7 @@ namespace Gec.Controllers.Web
                 {
                     if (string.IsNullOrWhiteSpace(returnUrl))
                     {
-                        return RedirectToAction("Trips", "Playgroud");
+                        return RedirectToAction("Trips", "Playground");
                     }
                     else
                         Redirect(returnUrl);
