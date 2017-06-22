@@ -20,8 +20,6 @@
     
 }
 
-    #buttonMenu:hover {
-    }
 
 #footer {
     background-color: #2a2c36;
@@ -49,7 +47,7 @@
 
 /*input[type=text], input[type=password], textarea {
     width: 150px;*/
-}
+/*}*/
 
 #main {
     /*background-color: #eee;*/
@@ -81,8 +79,7 @@
 #navbarTransform {
     background: linear-gradient(rgba(42,44,54,1),rgba(42,44,54,0.70), rgba(42,44,54,1));
 }
-.nav {
-}
+
 
     .nav li {
         text-align: center;
@@ -138,6 +135,7 @@
 
 
 #sidebar {
+    font-family: fantasy;
     display: block;
     background: #2a2c36;
     /*opacity:0.95;*/
@@ -191,8 +189,6 @@ ul {
     
 }
 
-    #sidebarToggle:after {
-    }
 
     #sidebarToggle:hover {
         box-shadow: 2px 1.5px 15px 5px #808080;
