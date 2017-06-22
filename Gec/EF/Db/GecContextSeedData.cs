@@ -1,4 +1,7 @@
 ﻿using Gec.Models;
+using Gec.Models.Account;
+using Gec.Models.Playground;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,19 +13,31 @@ namespace Gec.EF.Db
     public class GecContextSeedData
     {
         private GecContext _ctx;
+        private UserManager<User> _userManager;
 
-        public GecContextSeedData(GecContext ctx)
+        public GecContextSeedData(GecContext ctx, UserManager<User> userManager)
         {
             _ctx = ctx;
+            _userManager = userManager;
         }
         public async Task EnsureSeedData()
         {
+            if(await _userManager.FindByEmailAsync("asvimalo@gmail.com") == null)
+            {
+                var user = new User()
+                {
+                    UserName = "asvimalo@gmail.com",
+                    Email = "asvimalo@gmail.com"
+                };
+                await _userManager.CreateAsync(user, "P@ssw0rd!");
+            }
+
             if (!_ctx.Trips.Any())
             {
                 var usTrip = new Trip()
                 {
                     Name = "US Trip",
-                    UserName = "Andrés",
+                    UserName = "asvimalo@gmail.com",
                     DateCreated = DateTime.UtcNow,
                     Stops = new List<Stop>
                     {
@@ -42,7 +57,7 @@ namespace Gec.EF.Db
                 var worldTrip = new Trip()
                 {
                     Name = "Worls Trip",
-                    UserName = "",//TODO
+                    UserName = "asvimalo@gmail.com",
                     DateCreated = DateTime.UtcNow,
                     Stops = new List<Stop>
                     {
@@ -108,6 +123,7 @@ namespace Gec.EF.Db
                 };
                 _ctx.Trips.Add(worldTrip);
                 _ctx.Stops.AddRange(worldTrip.Stops);
+                await _ctx.SaveChangesAsync();
 
             }
         }

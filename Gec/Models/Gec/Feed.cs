@@ -1,4 +1,4 @@
-﻿using Gec.Models.Gec.Account;
+﻿using Gec.Models.Account;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +18,7 @@ namespace Gec.Models.Gec
         public DateTime Archived { get; set; }
         public int PictureId { get; set; }
         public Picture Picture { get; set; }
-        public int? UserId { get; set; }
+        public int? Id { get; set; }
         public User User { get; set; }
         public bool IsArchived { get; set; }
         public string FeedType { get; set; }

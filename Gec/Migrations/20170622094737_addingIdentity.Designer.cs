@@ -8,9 +8,10 @@ using Gec.EF.Db;
 namespace Gec.Migrations
 {
     [DbContext(typeof(GecContext))]
-    partial class GecContextModelSnapshot : ModelSnapshot
+    [Migration("20170622094737_addingIdentity")]
+    partial class addingIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")

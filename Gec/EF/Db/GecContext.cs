@@ -6,10 +6,12 @@ using Microsoft.EntityFrameworkCore;
 using Gec.Models.Playground;
 using Microsoft.Extensions.Configuration;
 using Gec.Models.Gec;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Gec.Models.Account;
 
 namespace Gec.EF.Db
 {
-    public class GecContext : DbContext
+    public class GecContext : IdentityDbContext<User>
     {
         private IConfigurationRoot _config;
 
@@ -22,6 +24,7 @@ namespace Gec.EF.Db
         public DbSet<Feed> Feeds { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Picture> Pictures { get; set; }
+        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

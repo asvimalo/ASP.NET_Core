@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Gec.Models;
 using Gec.EF;
 using Gec.EF.Db;
+using Gec.EF.IRepo;
 
 namespace Gec.Controllers.Web
 {
@@ -17,13 +18,13 @@ namespace Gec.Controllers.Web
     {
         IEmailService _emailService;
         IConfigurationRoot _config;
-        private GecContext _ctx;
+        IFeedRepo _feedRepo;
 
-        public GecController(IEmailService emailService, IConfigurationRoot config, GecContext ctx)
+        public GecController(IEmailService emailService, IConfigurationRoot config, IFeedRepo feedRepo)
         {
             _emailService = emailService;
             _config = config;
-            _ctx = ctx;
+            _feedRepo = feedRepo;
         }
         public IActionResult Index()
         {

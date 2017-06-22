@@ -1,5 +1,5 @@
 ﻿using Gec.EF.Db;
-
+using Gec.EF.IRepo;
 using Gec.Models.Gec;
 using Microsoft.EntityFrameworkCore;
 using System;

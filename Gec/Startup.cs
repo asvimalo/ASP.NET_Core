@@ -13,6 +13,12 @@ using Microsoft.Extensions.Configuration;
 using Gec.Models;
 using Gec.EF;
 using Gec.EF.Db;
+using Gec.EF.IRepo;
+using Gec.EF.Repo;
+using Gec.Models.Gec;
+using Gec.Models.Account;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace Gec
 {
@@ -38,6 +44,17 @@ namespace Gec
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddIdentity<User, IdentityRole>(config =>
+            {
+                config.User.RequireUniqueEmail = true;
+                config.Password.RequiredLength = 8;
+                config.Cookies.ApplicationCookie.LoginPath = "/Account/Login";
+            })
+            .AddEntityFrameworkStores<GecContext>();
+            //services.AddEntityFramework()
+            //    .AddEntityFrameworkSqlServer()
+            //    .AddDbContext<GecContext>();
+
             services.AddSingleton(_config);
 
             if (_env.IsDevelopment() || _env.IsEnvironment("Testing"))
@@ -49,7 +66,15 @@ namespace Gec
                 // implement the real one
             }
             services.AddDbContext<GecContext>();
+            services.AddScoped<IFeedRepo, FeedRepo>();
+            services.AddScoped<ICommentRepo, CommentRepo>();
+            services.AddScoped<IPictureRepo, PictureRepo>();
+            services.AddScoped<IPlaygroundRepo, PlaygroundRepo>();
+
+
+
             services.AddTransient<GecContextSeedData>();
+            services.AddLogging();
             services.AddMvc();
         
         }
@@ -58,15 +83,22 @@ namespace Gec
         public void Configure(IApplicationBuilder app, 
             IHostingEnvironment env,
             GecContextSeedData seeder
-            /*, ILoggerFactory loggerFactory*/)
+            , ILoggerFactory loggerFactory)
         {   //1.
             //app.UseDefaultFiles(); => once a controller 
             //has control over a view the default index won t be used
             if (env.IsEnvironment("Development"))
+            {
                 app.UseDeveloperExceptionPage();
+                loggerFactory.AddDebug(LogLevel.Information);
+            }
+            else
+                loggerFactory.AddDebug(LogLevel.Error);
+               
 
 
             app.UseStaticFiles();
+            app.UseIdentity();
 
             //2. Use Mvc to activate the comunication between controller and view
             //Use MapRoute to listen to requests

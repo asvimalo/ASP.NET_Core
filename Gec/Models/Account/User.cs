@@ -1,6 +1,13 @@
-﻿namespace Gec.Models.Gec.Account
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Gec.Models.Account
 {
-    public class User
+    public class User : IdentityUser
     {
+        
     }
 }

@@ -42,7 +42,11 @@ namespace Gec.EF.Repo
             return _ctx.Pictures.ToList();
         }
 
-       
+        public ICollection<Picture> GetAll(string feedType)
+        {
+            throw new NotImplementedException();
+        }
+
         public Picture Update(Picture picture)
         {
             _ctx.Entry(picture).State = EntityState.Modified;

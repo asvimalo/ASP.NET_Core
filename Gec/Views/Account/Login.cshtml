@@ -1,4 +1,5 @@
-﻿@{ 
+﻿@model Gec.ViewModels.LoginViewModel
+@{
     ViewBag.Title = "Login";
 }
 
@@ -8,5 +9,26 @@
     <script src="~/js/site.js"></script>
 
 }
-<link href="~/css/loginStyle.css" rel="stylesheet" />
+@*<link href="~/css/loginStyle.css" rel="stylesheet" />*@
 
+<div class="row">
+    <div class="col-md-6 col-lg-offset-3">
+        <h3>Login</h3>
+        <form method="post">
+            @*<div class="form-control danger" asp-validation-summary="ValidationSummary.ModelOnly"></div>*@
+            <div class="form-group">
+                <label asp-for="Username"></label>
+                <input asp-for="Username" class="form-control" />
+                <div class="form-control danger" asp-validation-for="Username"></div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" />
+                <div class="form-control danger" asp-validation-for="Password"></div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-success form-control" />
+            </div>
+        </form>
+    </div>
+</div>
