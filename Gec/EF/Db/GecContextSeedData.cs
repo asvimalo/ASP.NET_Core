@@ -22,14 +22,22 @@ namespace Gec.EF.Db
         }
         public async Task EnsureSeedData()
         {
-            if(await _userManager.FindByEmailAsync("asvimalo@gmail.com") == null)
+            if(await _userManager.FindByEmailAsync("asvimalo@gmail.com") == null && await _userManager.FindByEmailAsync("dalius.pamparas@gmail.com") == null)
             {
-                var user = new User()
+                var user1 = new User()
                 {
                     UserName = "asvimalo@gmail.com",
-                    Email = "asvimalo@gmail.com"
+                    Email = "asvimalo@gmail.com",
+                    
                 };
-                await _userManager.CreateAsync(user, "P@ssw0rd!");
+                await _userManager.CreateAsync(user1, "P@ssw0rd!");
+                var user2 = new User()
+                {
+                    UserName = "dalius.pamparas@gmail.com",
+                    Email = "dalius.pamparas@gmail.com",
+
+                };
+                await _userManager.CreateAsync(user2, "P@ssw0rd!");
             }
 
             if (!_ctx.Trips.Any())

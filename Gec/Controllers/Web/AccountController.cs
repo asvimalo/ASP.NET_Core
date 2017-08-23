@@ -35,8 +35,8 @@ namespace Gec.Controllers.Web
             {
                 var signInResult = await _signInManager.PasswordSignInAsync(vm.Username,
                                         vm.Password, 
-                                        true, // persistent
-                                        false);//lockout disabled
+                                        true,   // persistent
+                                        false); // lockout disabled
 
                 if (signInResult.Succeeded)
                 {
@@ -45,7 +45,7 @@ namespace Gec.Controllers.Web
                         return RedirectToAction("Trips", "Playground");
                     }
                     else
-                        Redirect(returnUrl);
+                        return Redirect(returnUrl);
                 }
                 else
                     ModelState.AddModelError("", "Username or password incorrect");
@@ -57,9 +57,9 @@ namespace Gec.Controllers.Web
         {
             if (User.Identity.IsAuthenticated)
                 await _signInManager.SignOutAsync();
-            return RedirectToAction("Gec","Index");
+            return RedirectToAction("Index", "Gec");
         }
-
+        
 
         //public IActionResult Login()
         //{

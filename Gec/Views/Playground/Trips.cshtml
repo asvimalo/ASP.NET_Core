@@ -20,7 +20,8 @@
         <ul>
             @foreach (var trip in Model)
             {
-                <li>@trip.Name : @trip.DateCreated.ToString("d")</li>
+                <li><p>@trip.Name : @trip.DateCreated.ToString("d")</p>
+                <p>User Name : @trip.UserName</p></li>
             }
         </ul>
     </div>

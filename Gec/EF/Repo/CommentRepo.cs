@@ -38,7 +38,9 @@ namespace Gec.EF.Repo
 
         public ICollection<Comment> GetAll()
         {
-            return _ctx.Comments.ToList(); ;
+            var result = _ctx.Comments.ToList();
+            result.Sort();
+            return result; 
         }
 
         

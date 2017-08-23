@@ -14,7 +14,7 @@ namespace Gec.EF.IRepo
 
         Feed Get(int id);
 
-        ICollection<Feed> GetAll(string feedType);
+        List<Feed> GetAll(string feedType);
        
 
     }

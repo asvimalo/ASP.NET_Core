@@ -53,5 +53,9 @@ namespace Gec.EF.Repo
             _ctx.SaveChangesAsync();
             return picture;
         }
+        public void AddPictureToFeed(Picture picture)
+        {
+
+        }
     }
 }

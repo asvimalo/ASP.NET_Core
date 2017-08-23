@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Threading.Tasks; 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -20,6 +20,7 @@ using Gec.Models.Account;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Serialization;
 
 namespace Gec
 {
@@ -81,19 +82,25 @@ namespace Gec
                 {
                     config.Filters.Add(new RequireHttpsAttribute());
                 }
-                    
+            })
+            .AddJsonOptions(config =>
+            {
+                config.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver(); // It was already camelcasing before this config
             });
-        
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, 
             IHostingEnvironment env,
-            GecContextSeedData seeder
-            , ILoggerFactory loggerFactory)
-        {   //1.
-            //app.UseDefaultFiles(); => once a controller 
-            //has control over a view the default index won t be used
+            GecContextSeedData seeder,
+            ILoggerFactory loggerFactory)
+        {   
+            
+            // 1.
+            // app.UseDefaultFiles(); => once a controller 
+            // has control over a view the default index won t be used
+
             if (env.IsEnvironment("Development"))
             {
                 app.UseDeveloperExceptionPage();

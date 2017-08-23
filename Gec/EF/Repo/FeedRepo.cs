@@ -54,11 +54,18 @@ namespace Gec.EF.Repo
                     .FirstOrDefault(f => f.FeedId == id);
             
         }
-        public ICollection<Feed> GetAll(string feedType)
+        public List<Feed> GetAll(string feedType)
         {
-            
-                return _ctx.Feeds.Where(f => f.FeedType == feedType).ToList();
+            var result = _ctx.Feeds.Where(f => f.FeedType == feedType).ToList();
+            result.Sort();
+            return result;
            
+        }
+        public List<Feed> SortedByStars()
+        {
+            var result = _ctx.Feeds.ToList();
+            result.OrderByDescending(x => x.Stars);
+            return result;
         }
         
     }
