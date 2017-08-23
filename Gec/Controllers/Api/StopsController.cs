@@ -27,7 +27,7 @@ namespace Gec.Controllers.Api
             try
             {
                 var trip = _repo.GetTripByName(tripName);
-                return Ok(trip.Stops);
+                return Ok(trip.Stops.OrderBy(s => s.Order).ToList());
             }
             catch (Exception ex)
             {

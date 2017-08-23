@@ -56,5 +56,57 @@ namespace Gec.Helpers
             }
             return listTrips;
         }
+        public static Stop newStop(this StopViewModel stop)
+        {
+            var newStop = new Stop
+            {
+                Order = stop.Order,
+                Name = stop.Name,
+                Arrival = stop.Arrival
+
+            };
+            return newStop;
+        }
+        public static StopViewModel StopVM(this Stop newStop)
+        {
+            var stop = new StopViewModel
+            {
+                Order = newStop.Order,
+                Name = newStop.Name,
+                Arrival = newStop.Arrival
+
+            };
+            return stop;
+        }
+        public static List<Stop> ListStops(this List<StopViewModel> stops)
+        {
+            var listStops = new List<Stop>();
+            foreach (var stop in stops)
+            {
+                listStops.Add(new Stop
+                {
+                    Order = stop.Order,
+                    Name = stop.Name,
+                    Arrival = stop.Arrival
+
+                });
+            }
+            return listStops;
+        }
+        public static List<StopViewModel> ListStopsVM(this List<Stop> stops)
+        {
+            var listStops = new List<StopViewModel>();
+            foreach (var stop in stops)
+            {
+                listStops.Add(new StopViewModel
+                {
+                    Order = stop.Order,
+                    Name = stop.Name,
+                    Arrival = stop.Arrival
+
+                });
+            }
+            return listStops;
+        }
     }
 }
