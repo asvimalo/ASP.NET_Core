@@ -73,7 +73,7 @@ artifacts/
 *.svclog
 *.scc
 
-/Gec/config.json
+Gec/config.json
 
 # Chutzpah Test files
 _Chutzpah*
