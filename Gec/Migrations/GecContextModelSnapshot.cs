@@ -70,6 +70,8 @@ namespace Gec.Migrations
                     b.Property<int>("CommentId")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("DateCreated");
+
                     b.Property<int?>("FeedId");
 
                     b.Property<int>("Id");
@@ -96,25 +98,33 @@ namespace Gec.Migrations
                     b.Property<int>("FeedId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("Archived");
+                    b.Property<bool?>("Approved");
 
                     b.Property<string>("Article");
 
-                    b.Property<DateTime>("DateCreated");
+                    b.Property<DateTime?>("DateArchived");
+
+                    b.Property<DateTime?>("DateCreated");
 
                     b.Property<string>("FeedType");
 
                     b.Property<int?>("Id");
 
-                    b.Property<bool>("IsArchived");
+                    b.Property<bool?>("IsArchived");
+
+                    b.Property<int?>("Likes");
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("PictureId");
+                    b.Property<int?>("PictureId");
+
+                    b.Property<int?>("Stars");
 
                     b.Property<string>("Subtitle");
 
                     b.Property<string>("Title");
+
+                    b.Property<int?>("UnLikes");
 
                     b.Property<string>("UserId");
 
@@ -314,8 +324,7 @@ namespace Gec.Migrations
                 {
                     b.HasOne("Gec.Models.Gec.Picture", "Picture")
                         .WithMany("Feeds")
-                        .HasForeignKey("PictureId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("PictureId");
 
                     b.HasOne("Gec.Models.Account.User", "User")
                         .WithMany()

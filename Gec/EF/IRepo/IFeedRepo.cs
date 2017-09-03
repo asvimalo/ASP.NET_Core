@@ -1,5 +1,6 @@
 ﻿using Gec.Models.Gec;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Gec.EF.IRepo
 {
@@ -15,7 +16,6 @@ namespace Gec.EF.IRepo
         Feed Get(int id);
 
         List<Feed> GetAll(string feedType);
-       
-
+        Task<bool> SaveChangesAsync();
     }
 }

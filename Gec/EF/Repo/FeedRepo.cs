@@ -19,20 +19,23 @@ namespace Gec.EF.Repo
         }
         public void Add(Feed feed)
         {
+            
             if(feed != null)
             {
                
-                    _ctx.Feeds.Add(feed);
-                    _ctx.SaveChanges();
-               
+                _ctx.Feeds.Add(feed);
+                //await _ctx.SaveChangesAsync();
+                //var returnedFeed = feed;
+                //return feed;
             }
+            
         }
         public void Delete(int id)
         {
            
                 var delete = _ctx.Feeds.FirstOrDefault(d => d.FeedId == id);
                 _ctx.Feeds.Remove(delete);
-                _ctx.SaveChanges();
+                //_ctx.SaveChanges();
            
         }
         public Feed Update(Feed feed)
@@ -41,7 +44,7 @@ namespace Gec.EF.Repo
             {
                
                     _ctx.Entry(feed).State = EntityState.Modified;
-                    _ctx.SaveChangesAsync();                    
+                    //_ctx.SaveChangesAsync();                    
                          
             }
             return feed;
@@ -56,8 +59,8 @@ namespace Gec.EF.Repo
         }
         public List<Feed> GetAll(string feedType)
         {
-            var result = _ctx.Feeds.Where(f => f.FeedType == feedType).ToList();
-            result.Sort();
+            var result = _ctx.Feeds.Include(c => c.Comments).Where(f => f.FeedType == feedType).ToList();
+            //result.Sort();
             return result;
            
         }
@@ -67,6 +70,10 @@ namespace Gec.EF.Repo
             result.OrderByDescending(x => x.Stars);
             return result;
         }
-        
+
+        public async Task<bool> SaveChangesAsync()
+        {
+            return (await _ctx.SaveChangesAsync() > 0);
+        }
     }
 }

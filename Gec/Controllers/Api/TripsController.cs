@@ -1,4 +1,4 @@
-﻿using Gec.EF.Repo;
+﻿ using Gec.EF.Repo;
 using Gec.Models.Playground;
 using Gec.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -13,10 +13,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Gec.Helpers;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Gec.Controllers.Api
 {
     [Route("api/trips")]
+    
     public class TripsController : Controller
     {
         private ILogger<TripsController> _logger;
@@ -43,6 +45,7 @@ namespace Gec.Controllers.Api
         {
             try
             {
+                var result = _repo.GetTripsByUsername(this.User.Identity.Name);
                 var allTripsVm = Mappers.ListTripsVM(_repo.GetAllTrips().ToList());
                 return Ok(allTripsVm);
             }
@@ -61,6 +64,8 @@ namespace Gec.Controllers.Api
                 //ClaimsPrincipal currentUser = this.User;
 
                 var newTrip = Mappers.newTrip(trip);
+
+                newTrip.UserName = User.Identity.Name;
                 _repo.Add(newTrip);
 
                 if (await _repo.SaveChangesAsync())

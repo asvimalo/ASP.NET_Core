@@ -8,8 +8,13 @@ namespace Gec.EF.Repo
     {
         IEnumerable<Trip> GetAllTrips();
         void Add(Trip trip);
-        Task<bool> SaveChangesAsync();
+        
         void Delete(int id);
         Trip GetTripByName(string tripName);
+        Trip GetUserTripByName(string tripName, string username);
+        
+        IEnumerable<Trip> GetTripsByUsername(string name);
+        void AddAStop(string tripName, Stop newStop, string username);
+        Task<bool> SaveChangesAsync();
     }
 }

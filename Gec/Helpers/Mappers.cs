@@ -62,6 +62,8 @@ namespace Gec.Helpers
             {
                 Order = stop.Order,
                 Name = stop.Name,
+                Longitude = stop.Longitude,
+                Latitude = stop.Latitude,
                 Arrival = stop.Arrival
 
             };
@@ -73,6 +75,8 @@ namespace Gec.Helpers
             {
                 Order = newStop.Order,
                 Name = newStop.Name,
+                Longitude = newStop.Longitude,
+                Latitude = newStop.Latitude,
                 Arrival = newStop.Arrival
 
             };
@@ -86,6 +90,8 @@ namespace Gec.Helpers
                 listStops.Add(new Stop
                 {
                     Order = stop.Order,
+                    Longitude = stop.Longitude,
+                    Latitude = stop.Latitude,
                     Name = stop.Name,
                     Arrival = stop.Arrival
 
@@ -101,6 +107,8 @@ namespace Gec.Helpers
                 listStops.Add(new StopViewModel
                 {
                     Order = stop.Order,
+                    Longitude = stop.Longitude,
+                    Latitude = stop.Latitude,
                     Name = stop.Name,
                     Arrival = stop.Arrival
 

@@ -1,80 +1,156 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gec</title>
+    @*<title>@ViewBag.Title</title>*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="~/lib/bootswatch/journal/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    @*<link rel="stylesheet" href="~/lib/bootswatch/journal/bootstrap.min.css" />*@
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet">
+    <link href="~/css/grid.css" rel="stylesheet" />
+    <link href="~/css/master.css" rel="stylesheet" />
+    @*<link rel="stylesheet" href="~/css/site.css" />*@
 
 </head>
 <body>
-    <div id="sidebar">
-        <div id="logo"><img alt="yo" src="~/img/gec.jpg" class="headshot" /></div>
+    <div class="container-fluid header">
+        <div class="container">
+            <div class="row">
+                <div class="menublock">
+                    <div class="col-sm-1 "></div>
+                    <div class="col-sm-11 ">
+                        <a asp-controller="Gec" asp-action="Index" class="topMenu">home</a>
+                        <a asp-controller="News" asp-action="Index" class="topMenu">News</a>
+                        <a asp-controller="Blog" asp-action="Index" class="topMenu">Blog</a>
+                        <a asp-controller="Gec" asp-action="Historia" class="topMenu">Historia</a>
+                        <a asp-controller="Gec" asp-action="Contact" class="topMenu">Contact</a>
+                        <a asp-controller="Playground" asp-action="Index"  class="topMenu">Playground</a>
 
-        <ul class="nav">
-            <li class="active"><a asp-controller="Gec" asp-action="Index">Noticias <i class="glyphicon glyphicon-globe"></i></a></li>
-            <li><a asp-controller="Blog" asp-action="Index">Blog <i class="fa fa-newspaper-o"></i></a></li>
-            <li><a asp-controller="Gec" asp-action="Historia">O Gec <i class="fa fa-leaf"></i></a></li>
-            <li><a asp-controller="Playground" asp-action="Index">Playground <i class="fa fa-play-circle"></i></a></li>
-            <li><a asp-controller="Gec" asp-action="Contact">Contacte <i class="glyphicon glyphicon-send"></i></a></li>
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <a asp-controller="Account" asp-action="Login"  class="topMenu">Sign In <i class="fa fa-user-circle"></i></a>
+                        }
 
-            @if (!User.Identity.IsAuthenticated)
-            {
-                <li><a asp-controller="Account" asp-action="Login">Sign in <i class="fa fa-user-circle"></i></a></li>
-            }
-            
-            @if (User.Identity.IsAuthenticated)
-            {
-                <li><a asp-controller="Account" asp-action="Logout">Sign out <i class="glyphicon glyphicon-log-out"></i></a></li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a asp-controller="Account" asp-action="Logout"  class="topMenu"> Logout <i class="glyphicon glyphicon-log-out"></i></a>
 
-            }
-        </ul>
-    </div>
+                        }
+                    </div>
+                </div>
+                <div class="row">
+                    @*<div class="submenublock">
+                        <div class="col-sm-1 "></div>
+                        <div class="col-sm-11 ">
+                            <a asp-controller="Playground" asp-action="Index" class="subtopMenu">Playground</a>
 
-    <div id="wrapper">
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <ul class="nav navbar-nav navbar">
-                    <li>
-                        <div id="buttonMenu">
-                            <button id="sidebarToggle" class="btn btn-sm" type="button">
-                                <i class="fa fa-angle-left"></i>
-                            </button>
+                            @if (!User.Identity.IsAuthenticated)
+                            {
+                                <a asp-controller="Account" asp-action="Login" class="subtopMenu">Sign In <i class="fa fa-user-circle"></i></a>
+                            }
+
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a asp-controller="Account" asp-action="Logout" class="subtopMenu"> Logout <i class="glyphicon glyphicon-log-out"></i></a>
+
+                            }
+                            @*<a href="#" class="subtopMenu">Some link</a><a href="#" class="subtopMenu">Some link</a><a href="#" class="subtopMenu">Some link</a>*@
+                        @*</div>
+                    </div>*@
+                </div>
+                <!-- end menu -->
+                <div class="row">
+                    <div class="col-sm-2 "><img src="~/images/gec-logo.png" alt="Gec"></div>
+                    <div class="col-sm-5  "></div>
+                    <div class="col-sm-5 ">
+                        <div class="row">
+                            <div class="col-sm-12 headText1">Here we write about that wonderfull element about ugla some text</div>
                         </div>
-                    </li>
-                </ul>
-                <a asp-controller="Playground" asp-action="Index" class="navbar-brand">gec</a>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="#" class="btn btn-sm btn-info"><i class="fa fa-save">Save</i></a>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="#" class="btn btn-sm btn-info"><i class="fa fa-print">Print</i></a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <div id="main" class="container-fluid">
-            <div>
-                @RenderBody();
-            </div>
-        </div>
-        <div id="footer" class="container-fluid">
-            <div class="navbar navbar-inverse navbar navbar-fixed-bottom">
-                <p>&copy; 2017 <a class="text-success" href="http://www.gec.pt">gec grupo ecológico de Cascais</a></p>
+                        <div class="row">
+                            <div class="col-sm-12 headText2">Ugla eyllow eyes vulgaris in lorem ipsum thesis lorem ipsum text</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
+    <!-- end header -->
+    @RenderBody()
     <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="~/js/site.js"></script>
-    @RenderSection("scripts", false);
-
+    @*<script type="text/javascript" src="~/js/site.js"></script>*@
+    @RenderSection("scripts", false)
 </body>
 </html>
+
+@*<body>
+        <div id="sidebar">
+            <div id="logo"><img alt="yo" src="~/img/gec.jpg" class="headshot" /></div>
+
+            <ul class="nav">
+                <li class="active"><a asp-controller="Gec" asp-action="Index">Noticias <i class="glyphicon glyphicon-globe"></i></a></li>
+                <li><a asp-controller="Blog" asp-action="Index">Blog <i class="fa fa-newspaper-o"></i></a></li>
+                <li><a asp-controller="Gec" asp-action="Historia">O Gec <i class="fa fa-leaf"></i></a></li>
+                <li><a asp-controller="Playground" asp-action="Index">Playground <i class="fa fa-play-circle"></i></a></li>
+                <li><a asp-controller="Gec" asp-action="Contact">Contacte <i class="glyphicon glyphicon-send"></i></a></li>
+
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <li><a asp-controller="Account" asp-action="Login">Sign in <i class="fa fa-user-circle"></i></a></li>
+                }
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li><a asp-controller="Account" asp-action="Logout">Sign out <i class="glyphicon glyphicon-log-out"></i></a></li>
+
+                }
+            </ul>
+        </div>
+
+        <div id="wrapper">
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <ul class="nav navbar-nav navbar">
+                        <li>
+                            <div id="buttonMenu">
+                                <button id="sidebarToggle" class="btn btn-sm" type="button">
+                                    <i class="fa fa-angle-left"></i>
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                    <a asp-controller="Playground" asp-action="Index" class="navbar-brand">gec</a>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" class="btn btn-sm btn-info"><i class="fa fa-save">Save</i></a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" class="btn btn-sm btn-info"><i class="fa fa-print">Print</i></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div id="main" class="container-fluid">
+                <div>
+                    @RenderBody();
+                </div>
+            </div>
+            <div id="footer" class="container-fluid">
+                <div class="navbar navbar-inverse navbar navbar-fixed-bottom">
+                    <p>&copy; 2017 <a class="text-success" href="http://www.gec.pt">gec grupo ecológico de Cascais</a></p>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="~/js/site.js"></script>
+        @RenderSection("scripts", false);
+
+    </body>*@

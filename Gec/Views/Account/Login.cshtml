@@ -4,30 +4,33 @@
 }
 
 @section scripts {
-    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
-    <script src="~/js/site.js"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 
-}
-@*<link href="~/css/loginStyle.css" rel="stylesheet" />*@
+    }
+
 
 <div class="row">
     <div class="col-md-6 col-lg-offset-3">
         <h3>Login</h3>
-        <form method="post">
-            @*<div class="form-control danger" asp-validation-summary="ValidationSummary.ModelOnly"></div>*@
+        <form method="post" novalidate>
+            <div asp-validation-summary="ModelOnly"></div>
             <div class="form-group">
                 <label asp-for="Username"></label>
-                <input asp-for="Username" type="email" class="form-control" />
-                <div asp-validation-for="Username"></div>
+              
+                    <input asp-for="Username" type="email" class="form-control" />
+                
+                <span asp-validation-for="Username"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Password"></label>
                 <input asp-for="Password" type="password" class="form-control" />
-                <div asp-validation-for="Password"></div>
+               
+                    <span asp-validation-for="Password"></span>
+               
             </div>
             <div class="form-group">
-                <input type="submit" value="Login" class="btn btn-success form-control" />
+                <input type="submit" value="Login" class="btn btn-primary" />
             </div>
         </form>
     </div>

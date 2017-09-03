@@ -2,9 +2,11 @@
 using Gec.Models.Account;
 using Gec.Models.Playground;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,24 +15,36 @@ namespace Gec.EF.Db
     public class GecContextSeedData
     {
         private GecContext _ctx;
+        private RoleManager<IdentityRole> _roleManager;
         private UserManager<User> _userManager;
 
-        public GecContextSeedData(GecContext ctx, UserManager<User> userManager)
+        public GecContextSeedData(GecContext ctx, 
+            UserManager<User> userManager,
+            RoleManager<IdentityRole> roleManager)
         {
             _ctx = ctx;
             _userManager = userManager;
+            _roleManager = roleManager;
         }
         public async Task EnsureSeedData()
         {
             if(await _userManager.FindByEmailAsync("asvimalo@gmail.com") == null && await _userManager.FindByEmailAsync("dalius.pamparas@gmail.com") == null)
             {
+                if (!(await _roleManager.RoleExistsAsync("Admin")))
+                {
+                    var role = new IdentityRole("Admin");
+                    role.Claims.Add(new IdentityRoleClaim<string>() { ClaimType = "IsAdmin", ClaimValue = "True"});
+                    await _roleManager.CreateAsync(role);
+                }
                 var user1 = new User()
                 {
                     UserName = "asvimalo@gmail.com",
                     Email = "asvimalo@gmail.com",
                     
                 };
-                await _userManager.CreateAsync(user1, "P@ssw0rd!");
+                var userResult = await _userManager.CreateAsync(user1, "P@ssw0rd!");
+                var roleResult = await _userManager.AddToRoleAsync(user1, "Admin");
+                var claimResult = await _userManager.AddClaimAsync(user1, new Claim("SuperUser", "True"));
                 var user2 = new User()
                 {
                     UserName = "dalius.pamparas@gmail.com",

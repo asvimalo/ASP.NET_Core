@@ -12,6 +12,10 @@ namespace Gec.Controllers.Web
 {
     public class NewsController : Controller
     {
+        public NewsController()
+        {
+
+        }
         public IActionResult Index()
         {
             return View();

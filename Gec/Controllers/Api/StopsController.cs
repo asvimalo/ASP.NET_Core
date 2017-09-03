@@ -1,6 +1,8 @@
 ﻿using Gec.EF.Repo;
 using Gec.Helpers;
+using Gec.Services;
 using Gec.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,23 +13,30 @@ using System.Threading.Tasks;
 
 namespace Gec.Controllers.Api
 {
+    [Authorize]
+    [Route("/api/trips/{tripName}/stops")]
     public class StopsController : Controller
     {
+        private GeoCoordsService _coordsService;
         private ILogger<TripsController> _logger;
         private IPlaygroundRepo _repo;
 
-        public StopsController(IPlaygroundRepo repo, ILogger<TripsController> logger)
+        public StopsController(IPlaygroundRepo repo, 
+            ILogger<TripsController> logger,
+            GeoCoordsService coordsService)
         {
             _repo = repo;
             _logger = logger;
+            _coordsService = coordsService;
         }
         [HttpGet("")]
         public IActionResult Get(string tripName)
         {
             try
             {
-                var trip = _repo.GetTripByName(tripName);
-                return Ok(trip.Stops.OrderBy(s => s.Order).ToList());
+                
+                var trip = _repo.GetUserTripByName(tripName, User.Identity.Name);
+                return Ok(Mappers.ListStopsVM(trip.Stops.OrderBy(s => s.Order).ToList()));
             }
             catch (Exception ex)
             {
@@ -37,23 +46,44 @@ namespace Gec.Controllers.Api
             return BadRequest("Failed to get stops");
         }
         [HttpPost("")]
-        public async Task<IActionResult> Post([FromBody]TripViewModel trip)
+        public async Task<IActionResult> Post(string tripName, [FromBody]StopViewModel stop)
         {
-            if (ModelState.IsValid)
+            try
             {
-                //ClaimsPrincipal currentUser = this.User;
-
-                var newTrip = Mappers.newTrip(trip);
-                _repo.Add(newTrip);
-
-                if (await _repo.SaveChangesAsync())
+                if (ModelState.IsValid)
                 {
-                    return Created($"api/trips/{trip.Name}", Mappers.TripVM(newTrip));
+                    //ClaimsPrincipal currentUser = this.User;
+
+                    var newStop = Mappers.newStop(stop);
+
+                    var result = await _coordsService.GetCoordsAsync(newStop.Name);
+                    if (!result.Success)
+                    {
+                        _logger.LogError(result.Message);
+                    }
+                    else
+                    {
+                        newStop.Latitude = result.Latitude;
+                        newStop.Longitude = result.Longitude;
+                    }
+
+                    _repo.AddAStop(tripName,newStop, User.Identity.Name);
+
+                    if (await _repo.SaveChangesAsync())
+                    {
+                        return Created($"/api/trips/{tripName}/{newStop.Name}", Mappers.StopVM(newStop));
+                    }
+
                 }
-
             }
+            catch (Exception Ex)
+            {
 
-            return BadRequest("Failed to save the trip");
+                _logger.LogError("Failed to save new Stop: {0}", Ex);
+            }
+            
+
+            return BadRequest("Failed to save new stop");
         }
     }
 }

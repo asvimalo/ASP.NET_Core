@@ -34,16 +34,17 @@ namespace Gec.Controllers.Web
         [Authorize]
         public IActionResult Trips()
         {
-            try
-            {
-                var trips = _repo.GetAllTrips();
-                return View(trips);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Failed to get trips in Index page: {ex.Message}");
-                return Redirect("/Error");
-            }
+            return View();
+        //    try
+        //    {
+        //        var trips = _repo.GetAllTrips();
+        //        return View(trips);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _logger.LogError($"Failed to get trips in Index page: {ex.Message}");
+        //        return Redirect("/Error");
+        //    }
         }
     }
 }
