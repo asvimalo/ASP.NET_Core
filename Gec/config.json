@@ -1,16 +1,1 @@
-﻿{
-  "MailSettings": {
-    "ToAddress": "asvimalo@gmail.com"
-  },
-  "ConnectionStrings": {
-    "GecContextConnection": "Server=(localdb)\\MSSQLLocalDB;Database=GecDb;Trusted_Connection=true;MultipleActiveResultSets=true;"
-  },
-  "Keys": {
-    "BingKey": "fIT4I08xQ7LH6cFDYvJ3~VJG2y4Aee_tsocKz9sEKbw~AsgDV9kkf7ECu5PQkc8RU8thkJtZQyTYu0A2Fks6WlDFYZOwGL4LfN76ZdCbTiJ0"
-  },
-  "Token": {
-    "Key": "ForThisToken458796QIURIUTNDFAKGLSKGLKSKDVNasdlkOKkjksfalälödlf",
-    "Issuer": "http://gec.org",
-    "Audience": "http://gec.org"
-  }
-}
+﻿
